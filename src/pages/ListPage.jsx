@@ -10,26 +10,38 @@ import {
 
 export default function ListPage() {
   const [movies, setMovies] = useState([]);
-  const [searched, setSearched] = useState(false);
+  const [moviesD, setMoviesD] = useState([]);
+  const [found, setFound] = useState(false);
   const inputRef = useRef("");
+  let api_key = "e1f6fd51"
+  // let fetchDetails = `https://www.omdbapi.com/?apikey=e1f6fd51&i=${movie.imdbID}`
+
+  console.log(moviesD);
 
   function searchSelection() {
-    fetch(
-      `http://www.omdbapi.com/?apikey=e1f6fd51&s=${inputRef.current.value}&type=movie`
-    )
+    let filmy = []
+
+    fetch(`http://www.omdbapi.com/?apikey=${api_key}&s=${inputRef.current.value}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.Response === "True") {
           setMovies(data.Search);
-          setSearched(true);
+          movies.forEach(movie => {
+            fetch(`https://www.omdbapi.com/?apikey=e1f6fd51&i=${movie.imdbID}`)
+              .then(res => res.json())
+              .then(data => {
+                filmy.push(data)
+                setMoviesD(filmy)
+              })
+          })
+          setFound(true);
         } else {
-          setSearched(false);
+          setFound(false);
         }
       });
   }
 
-  const moviesEls = movies.map((movie) => (
+  const moviesEls = moviesD.map((movie) => (
     <div className="movie-component">
       <div className="movie">
         <div className="poster">
@@ -38,6 +50,7 @@ export default function ListPage() {
         <div className="movie-info">
           <h1>Tytuł: {movie.Title}</h1>
           <p>Year: {movie.Year}</p>
+          <p>Plot: {movie.Plot}</p>
         </div>
       </div>
       <hr />
@@ -67,7 +80,7 @@ export default function ListPage() {
           <button onClick={searchSelection}>Search</button>
         </div>
         <div className="movies-list">
-          {searched ? moviesEls : "No movies found"}
+          {found ? moviesEls : "No movies found"}
         </div>
       </div>
     </section>
