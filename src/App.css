@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    
 }
 
 body {
@@ -10,7 +11,6 @@ body {
     align-items: center;
     justify-content: center;
 }
-
 .header{
     display: flex;
     align-items: center;
@@ -61,7 +61,7 @@ a, a:visited, a:active {
     top: 198px;
     max-height: 36px;
 }
-.icon{
+.search-icon{
     color: grey;
     border: 1px solid grey;
     border-right: 0px;
@@ -103,9 +103,19 @@ input:valid{
 }
 
 .movies-list{
-    margin-top: 40px;
-    max-width: 550px;   
+    max-width: 550px;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin-top: 30px;
+    width: 548px;
+    height: 600px;
 }
+.not-found{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
 .movie-component hr{
     border-color: #E5E7EB;
 }
@@ -114,8 +124,58 @@ input:valid{
     display: flex;
     padding: 20px 0px;
 }
+.movie-details{
+    display: flex;
+    margin-left: 21px;
+    flex-direction: column;
+}
+.movie-title{
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+.movie-genre{
+    display: flex;
+    align-items: center;
+    margin-top: 11px;
+    gap: 19px
+}
+.add-to-watchlist{
+    display: flex;
+}
+.movie-plot{
+    margin-top: 8px;
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 20px;
+}
 
 img {
     width: 100px;
     height: 150px;
 }
+.add-icon{
+    margin: auto 6px auto 13px;
+    color: white;
+    background-color: #111827;
+    font-size: 11px;
+    font-style: bold;
+    padding: 4px;
+    border-radius: 50%;
+}
+.star-icon{
+    color: #FEC654;
+    margin-right: 4px;
+}
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }

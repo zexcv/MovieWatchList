@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMagnifyingGlass,
-  // faPlus,
-  // faMinus,
-  // faStar,
+  faPlus,
+  faMinus,
+  faStar,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function ListPage() {
@@ -37,6 +37,7 @@ export default function ListPage() {
           Promise.all(fetchPromises)
             .then((moviesData) => {
               setMoviesD(moviesData);
+              console.log(moviesD)
             })
             .catch((error) => {
               console.error("Error fetching movie details:", error);
@@ -51,18 +52,33 @@ export default function ListPage() {
         console.error("Error fetching search results:", error);
       });
   }
-  
 
+//NOTHING FOUND
+  const notFoundEl = (
+    <div className="not-found">???</div>
+  )
+  
+// MOVIE COMPONENT
   const moviesEls = moviesD.map((movie) => (
     <div key={movie.imdbID} className="movie-component">
       <div className="movie">
         <div className="poster">
           <img src={movie.Poster} alt="poster" />
         </div>
-        <div className="movie-info">
-          <h1>Tytuł: {movie.Title}</h1>
-          <p>Year: {movie.Year}</p>
-          <p>Plot: {movie.Plot}</p>
+        <div className="movie-details">
+          <div className="movie-title">
+            <h1>{movie.Title}</h1>
+            <p><FontAwesomeIcon icon={faStar} className="star-icon" />{movie.Ratings[0].Value.slice(0,3)}</p>
+          </div>
+          <div className="movie-genre">
+            <p>{movie.Runtime}</p>
+            <p>{movie.Genre}</p>
+            <div className="add-to-watchlist">
+              <FontAwesomeIcon icon={faPlus} className="add-icon" />
+              <p>Watchlist</p>
+            </div>
+          </div>
+          <div className="movie-plot">{movie.Plot}</div>
         </div>
       </div>
       <hr />
@@ -82,7 +98,7 @@ export default function ListPage() {
       <div className="watchlist-container">
         <div className="input-search">
           <div className="icon-div">
-            <FontAwesomeIcon icon={faMagnifyingGlass} className="icon" />
+            <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
           </div>
           <input
             ref={inputRef}
@@ -92,34 +108,9 @@ export default function ListPage() {
           <button onClick={searchSelection}>Search</button>
         </div>
         <div className="movies-list">
-          {found ? moviesEls : "No movies found"}
+          {found ? moviesEls : notFoundEl}
         </div>
       </div>
     </section>
   );
 }
-
-
-// function searchSelection() {
-//   let films = []
-//   let filmsInfo = []
-
-//   fetch(`http://www.omdbapi.com/?apikey=${api_key}&s=${inputRef.current.value}`)
-//     .then((res) => res.json())
-//     .then((data) => {
-//       if (data.Response === "True") {
-//         films = data.Search
-//         films.forEach((movie) => {
-//         fetch(`https://www.omdbapi.com/?apikey=e1f6fd51&i=${movie.imdbID}`)
-//           .then((res) => res.json())
-//           .then(data => {
-//             filmsInfo.push(data)
-//           });
-//         });
-//         setFound(true);
-//         console.log(filmsInfo)
-//       } else {
-//         setFound(false);
-//       }
-//     });
-// }
