@@ -9,6 +9,10 @@ export default function Header() {
     return path === "/" ? "Find your film" : "My Watchlist";
   }
 
+  function getTargetText(){
+    return path === "/" ? "Watchlist" : "Search for movies"
+  }
+
   function getTargetPath() {
     return path === "/" ? "/watchlist" : "/";
   }
@@ -18,7 +22,7 @@ export default function Header() {
       <div className="header-text">
         <div className="find-text">{getHeaderText()}</div>
         <div className="link-container">
-          <Link to={getTargetPath()}>Watchlist</Link>
+          <Link to={getTargetPath()}>{getTargetText()}</Link>
         </div>
       </div>
     </div>
