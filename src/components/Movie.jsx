@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faCheck, faStar } from "@fortawesome/free-solid-svg-icons";
+import poster from '../images/poster_404.jpg'
+
 
 export default function Movie({ movie }) {
 const [watchlistIcon, setWatchlistIcon] = useState(faPlus)
@@ -44,14 +46,14 @@ function addToWatchlist(){
     <div key={movie.imdbID} className="movie-component">
       <div className="movie">
         <div className="poster">
-          <img src={movie.Poster} alt="poster" />
+          <img src={movie.Poster==="N/A" ? poster : movie.Poster} alt="poster" />
         </div>
         <div className="movie-details">
           <div className="movie-title">
             <h1>{movie.Title}</h1>
             <p>
               <FontAwesomeIcon icon={faStar} className="star-icon" />
-              {movie.Ratings[0].Value.slice(0, 3)}
+              {movie.Ratings && movie.Ratings.length > 0 && movie.Ratings[0].Value.slice(0,3) }
             </p>
           </div>
           <div className="movie-genre">

@@ -58,27 +58,24 @@ a:active {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: 6px;
   top: 198px;
   max-height: 36px;
 }
 .search-icon {
   color: grey;
-  border: 1px solid grey;
-  border-right: 0px;
-  border-radius: 6px 0px 0px 6px;
   height: 24px;
+  padding-left: 8px;
   margin-top: 1px;
-  padding: 5px 0px 5px 13px;
-  background-color: white;
 }
 
 .input-search input {
   width: 316px;
   height: 20px;
   padding: 7px 13px;
-  border-width: 1px 0px 1px 0px;
-  border-color: grey;
-  border-style: solid;
+  border-style: none;
 }
 input:focus {
   outline: none;
@@ -91,8 +88,10 @@ input:valid {
   color: #374151;
   width: 92px;
   height: 36px;
-  border: 1px solid grey;
+  border-style: none;
+  border-left: 1px solid grey;
   border-radius: 0 6px 6px 0;
+
 }
 
 .input-search button:active {
@@ -109,13 +108,15 @@ input:valid {
 }
 .not-found {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  text-align: center;
   margin-top: 100px;
   font-size: 22px;
+  color: #6b7280;
 }
 .not-found-icon{
-    margin-left: 10px;
     color: darkgrey;
+    font-size: 38px;
 }
 
 
@@ -131,6 +132,7 @@ input:valid {
   display: flex;
   margin-left: 21px;
   flex-direction: column;
+  margin-right: 8px;
 }
 .movie-title {
   display: flex;
