@@ -2,62 +2,61 @@
   margin: 0;
   padding: 0;
 }
-
-body {
-  font-family: "Inter", sans-serif;
+body, .header, .header-text, .watchlist-container, .input-search, .not-found, .movie, 
+.movie-details, .movie-title, .movie-genre, .add-to-watchlist{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+body, .header, .header-text, .input-search, .movie-title, .movie-genre {
+align-items: center;
+}
+body, .header, .watchlist-container, .input-search {
   justify-content: center;
 }
+body, .not-found, .movie-details{
+  flex-direction: column;
+}
+.movie-plot, .link-container{
+  font-size: 14px;
+}
+.header-text, a:active, .add-icon{
+  color: white;
+}
+.search-icon, input:valid{
+  color: grey;
+}
+.input-search input, .input-search button{
+  border-style: none;
+}
+body {
+  font-family: "Inter", sans-serif;
+}
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 550px;
   height: 220px;
   background-color: black;
   background-image: url(images/THJJRUhNlEc.png);
 }
-
 .header-text {
-  display: flex;
-  align-items: center;
-  color: white;
   width: 100%;
   gap: 35px;
 }
-
 .find-text {
   font-size: 42.795px;
   font-weight: 800;
   max-width: 100%;
   margin-left: 42px;
 }
-
 .link-container {
-  font-size: 14px;
   margin: 0 auto;
 }
-
 a,
 a:visited,
 a:active {
   font-weight: 700;
-  color: white;
   text-decoration: none;
 }
-
-.watchlist-container {
-  display: flex;
-  justify-content: center;
-}
-
 .input-search {
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: white;
   border: 1px solid grey;
   border-radius: 6px;
@@ -65,39 +64,28 @@ a:active {
   max-height: 36px;
 }
 .search-icon {
-  color: grey;
   height: 24px;
   padding-left: 8px;
   margin-top: 1px;
 }
-
 .input-search input {
   width: 316px;
   height: 20px;
   padding: 7px 13px;
-  border-style: none;
 }
 input:focus {
   outline: none;
 }
-input:valid {
-  color: grey;
-}
-
 .input-search button {
   color: #374151;
   width: 92px;
   height: 36px;
-  border-style: none;
   border-left: 1px solid grey;
   border-radius: 0 6px 6px 0;
-
 }
-
 .input-search button:active {
   background-color: darkgray;
 }
-
 .movies-list {
   max-width: 550px;
   overflow: scroll;
@@ -107,8 +95,6 @@ input:valid {
   height: 600px;
 }
 .not-found {
-  display: flex;
-  flex-direction: column;
   text-align: center;
   margin-top: 100px;
   font-size: 22px;
@@ -118,50 +104,34 @@ input:valid {
     color: darkgrey;
     font-size: 38px;
 }
-
-
 .movie-component hr {
   border-color: #e5e7eb;
 }
-
 .movie {
-  display: flex;
   padding: 20px 0px;
 }
 .movie-details {
-  display: flex;
   margin-left: 21px;
-  flex-direction: column;
   margin-right: 8px;
 }
 .movie-title {
-  display: flex;
-  align-items: center;
   gap: 8px;
 }
 .movie-genre {
-  display: flex;
-  align-items: center;
   margin-top: 11px;
   gap: 19px;
-}
-.add-to-watchlist {
-  display: flex;
 }
 .movie-plot {
   margin-top: 8px;
   color: #6b7280;
-  font-size: 14px;
   line-height: 20px;
 }
-
 img {
   width: 100px;
   height: 150px;
 }
 .add-icon {
   margin: auto 6px auto 13px;
-  color: white;
   background-color: #111827;
   font-size: 11px;
   font-style: bold;
@@ -172,26 +142,24 @@ img {
   color: #fec654;
   margin-right: 4px;
 }
+/* SCROLLBAR */
 ::-webkit-scrollbar {
   width: 8px;
 }
-
 ::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 4px;
 }
-
 ::-webkit-scrollbar-track {
   background-color: #f1f1f1;
 }
+/* ANIMATIONS */
 .add-icon {
-  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+  transition: 0.3s ease-in-out, 0.3s ease-in-out;
 }
-
 .add-icon.add {
   transform: scale(1) rotate(0deg);
 }
-
 .add-icon.check {
   transform: scale(1.2) rotate(360deg);
 }

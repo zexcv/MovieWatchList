@@ -64,7 +64,7 @@ function addToWatchlist(){
               <p>Watchlist</p>
             </div>
           </div>
-          <div className="movie-plot">{movie.Plot}</div>
+          <div className="movie-plot">{movie.Plot==="N/A" ? "Couldn't find a plot for this movie." : movie.Plot}</div>
         </div>
       </div>
       <hr />
