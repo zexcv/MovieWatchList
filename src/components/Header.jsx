@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 export default function Header() {
   const location = useLocation();
@@ -22,7 +22,7 @@ export default function Header() {
       <div className="header-text">
         <div className="find-text">{getHeaderText()}</div>
         <div className="link-container">
-          <Link to={getTargetPath()}>{getTargetText()}</Link>
+          <NavLink className="nav-link" to={getTargetPath()}>{getTargetText()}</NavLink>
         </div>
       </div>
     </div>
