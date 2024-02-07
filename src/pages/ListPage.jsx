@@ -11,9 +11,6 @@ export default function ListPage() {
   const inputRef = useRef("");
   const api_key = "e1f6fd51";
 
-  console.log(moviesD)
-
-
   function keyPress(event) {
     if (event.key === "Enter") {
       searchSelection();
