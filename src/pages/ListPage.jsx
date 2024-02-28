@@ -21,7 +21,7 @@ export default function ListPage() {
     setIsLoading(true);
     let films = [];
 
-    fetch(`http://www.omdbapi.com/?apikey=${api_key}&s=${inputRef.current.value}`)
+    fetch(`https://www.omdbapi.com/?apikey=${api_key}&s=${inputRef.current.value}`)
       .then((res) => res.json())
       .then((data) => {
 
